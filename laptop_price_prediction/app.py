@@ -5,7 +5,11 @@ import pickle
 # ===============================
 # Load trained model
 # ===============================
-data = pickle.load(open("laptop_price_model.pkl", "rb"))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "laptop_price_model.pkl")
+
+data = pickle.load(open(model_path, "rb"))
+
 model = data["model"]
 model_columns = data["columns"]
 
@@ -60,3 +64,4 @@ if st.button("🔮 Predict Price"):
     prediction = model.predict(input_df)
 
     st.success(f"💰 Estimated Laptop Price: ₹ {int(prediction[0])}")
+
