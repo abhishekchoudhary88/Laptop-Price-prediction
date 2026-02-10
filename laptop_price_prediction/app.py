@@ -1,6 +1,13 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import os
+import streamlit as st
+import pickle
+
+st.write("Current working directory:", os.getcwd())
+st.write("Files in current dir:", os.listdir())
+st.write("Files in app dir:", os.listdir(os.path.dirname(__file__)))
 
 # ===============================
 # Load trained model
@@ -64,4 +71,5 @@ if st.button("🔮 Predict Price"):
     prediction = model.predict(input_df)
 
     st.success(f"💰 Estimated Laptop Price: ₹ {int(prediction[0])}")
+
 
